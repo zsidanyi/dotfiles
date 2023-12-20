@@ -1,72 +1,63 @@
 #! /bin/sh
 
 # Path to the dotfiles
-#DOTFILES=`pwd`
-DOTFILES=~/dotfiles
+repo_root=~/dotfiles
+dotfiles=$repo_root/dotfiles
+configfiles=$repo_root/configfiles
+
+dot_targetdir=~
+config_targetdir=~/.config
+
+# Creating default config dir if not present
+mkdir -p $config_targetdir
+
+exclude_list="
+  .gitignore
+"
 
 # ###########################
 # # Handling home dir dotfiles
 # ###########################
-# List of the dotfiles
-array_dotfiles="
-    bash_aliases
-    bash_startup
-    csh_aliases
-    csh_startup
-    ctags
-    gitconfig_include
-    tmux.conf
-    vim
-    vimrc
-    lockscreen.sh
-"
 
-# Unpopulating dotfiles when switch "d" recieved
+# Unpopulating dotfiles and configs when switch "d" recieved
 if [ "$1" = "-d" ] ; then
-    for DOTFILE in $array_dotfiles ; do
+    for dotfile in $dotfiles/* ; do
         # Unlink dotfiles if possible
-        unlink ~/.$DOTFILE 2> /dev/null
-        echo "Dotfile .$DOTFILE unlinked"
+        unlink $dot_targetdir/.`basename $dotfile` 2> /dev/null
+        echo "Dotfile .$dotfile unlinked"
+    done
+    for configfile in $configfiles/* ; do
+        # Unlink configs if possible
+        unlink $config_targetdir/`basename $configfile` 2> /dev/null
+        echo "Config for $configfile unlinked"
     done
     # Exiting after unlink is done
     exit 0
 fi
 
 # Populating dotfiles
-for DOTFILE in $array_dotfiles ; do
-    # If there is already a dotfile with this name rename it to old
-    if [ -L ~/.$DOTFILE ]; then
-        unlink ~/.$DOTFILE 2> /dev/null
+for dotfile in $dotfiles/* ; do
+    target_link=$dot_targetdir/.`basename $dotfile`
+    # If there is already a dotfile with this name unlink it
+    if [ -L $target_link ]; then
+        unlink $target_link 2> /dev/null
     fi
 
     # Create the link to the new dotfile
-    ln -s $DOTFILES/$DOTFILE ~/.$DOTFILE
-    echo "Dotfile .$DOTFILE deployed"
+    ln -s $dotfile $target_link
+    echo "Dotfile .$dotfile deployed"
 done
 
-# ###########################
-# # Handling ~/.config rc files
-# ###########################
-# Path to the config dir
-CONFIG_DIR=~/.config
-
-# List of configs
-array_configs="
-    nvim
-"
-
-# Creating default config dir if not present
-mkdir -p $CONFIG_DIR
-
 # Populating configs
-for CONFIG in $array_configs ; do
-    # If there is already a config with this name rename it to old
-    if [ -L $CONFIG_DIR/$CONFIG ]; then
-        unlink $CONFIG_DIR/$CONFIG 2> /dev/null
+for config in $configfiles/* ; do
+    target_link=$config_targetdir/`basename $config`
+    # If there is already a config with this name unlink it
+    if [ -L $target_link ]; then
+        unlink $target_link 2> /dev/null
     fi
 
     # Create the link to the new config
-    ln -s $DOTFILES/$CONFIG $CONFIG_DIR/$CONFIG
-    echo "config for $CONFIG deployed"
+    ln -s $config $target_link
+    echo "Config for $config deployed"
 done
 

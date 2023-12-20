@@ -1,32 +1,32 @@
-[submodule "vim/pack/default/start/fzf.vim"]
+[submodule "fzf.vim"]
 	path = dotfiles/vim/pack/default/start/fzf.vim
 	url = git@github.com:junegunn/fzf.vim.git
 	shallow = true
-[submodule "vim/pack/default/start/vim-vinegar"]
+[submodule "vim-vinegar"]
 	path = dotfiles/vim/pack/default/start/vim-vinegar
 	url = git@github.com:tpope/vim-vinegar.git
 	shallow = true
-[submodule "vim/pack/default/start/vim-fugitive"]
+[submodule "vim-fugitive"]
 	path = dotfiles/vim/pack/default/start/vim-fugitive
 	url = git@github.com:tpope/vim-fugitive.git
 	shallow = true
-[submodule "vim/pack/lang/opt/verilog_systemverilog.vim"]
+[submodule "verilog_systemverilog.vim"]
 	path = dotfiles/vim/pack/lang/opt/verilog_systemverilog.vim
 	url = git@github.com:vhda/verilog_systemverilog.vim.git
 	shallow = true
-[submodule "vim/pack/rice/start/vim-airline"]
+[submodule "vim-airline"]
 	path = dotfiles/vim/pack/rice/start/vim-airline
 	url = git@github.com:vim-airline/vim-airline.git
 	shallow = true
-[submodule "nvim/pack/rice/start/tokyonight.nvim"]
+[submodule "tokyonight.nvim"]
 	path = configfiles/nvim/pack/rice/start/tokyonight.nvim
 	url = git@github.com:folke/tokyonight.nvim.git
 	shallow = true
-[submodule "nvim/pack/rice/start/lualine.nvim"]
+[submodule "lualine.nvim"]
 	path = configfiles/nvim/pack/rice/start/lualine.nvim
 	url = git@github.com:nvim-lualine/lualine.nvim.git
 	shallow = true
-[submodule "nvim/pack/rice/start/nvim-treesitter"]
+[submodule "nvim-treesitter"]
 	path = configfiles/nvim/pack/rice/start/nvim-treesitter
 	url = git@github.com:nvim-treesitter/nvim-treesitter.git
 	shallow = true

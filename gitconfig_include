@@ -1,0 +1,34 @@
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[push]
+	default = tracking
+[core]
+	preloadindex = true
+    editor = vim
+[alias]
+    d = difftool
+	st = status
+	ci = commit
+	cam = commit -a -m
+	cb = checkout -b
+	br = branch -a
+	co = checkout
+	rbi = rebase --interactive
+	rbim = rebase --interactive --preserve-merges
+	cp = cherry-pick -x
+	meld = difftool --tool=meld --no-prompt
+    lol = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
+    lal = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+	trustExitCode = true
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[mergetool]
+	prompt = false
+	trustExitCode = true

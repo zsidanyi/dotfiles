@@ -1,0 +1,33 @@
+##################################################
+## Custom script file for csh startup
+##################################################
+#########################
+## Prompt and terminal coloring
+#########################
+# Setting editor
+setenv EDITOR vim
+
+# Solving tmux and vim coloring issue
+if $?TMUX then
+    setenv TERM "screen-256color"
+else
+    setenv TERM "xterm-256color"
+endif
+
+# Defining colors
+set     bldred="%{\033[1;31m%}"
+set     bldgreen="%{\033[1;32m%}"
+set     bldyellow="%{\033[1;33m%}"
+set     bldblue="%{\033[1;34m%}"
+set     bldpurple="%{\033[1;35m%}"
+set     bldcyan="%{\033[1;36m%}"
+set     nrmwhite="%{\033[0;37m%}"
+set     txtrst="%{\033[0m%}" # This is needed at the end
+
+# Sourcing git helper scripts for prompt
+# These can be found usually in directory /usr/share/git/completion/
+source ~/.git-completion.tcsh
+
+# Setting the prompt
+alias __git_current_branch 'git rev-parse --abbrev-ref HEAD >& /dev/null && echo " (`git rev-parse --abbrev-ref HEAD`)"'
+alias precmd 'set prompt="[${bldgreen}%n${nrmwhite}@${bldblue}%M${nrmwhite}:%c1]${bldpurple}`__git_current_branch`${nrmwhite} %# ${txtrst}"'

@@ -1,0 +1,16 @@
+""""""""""""""""""""""""""""""""""""""""
+" Custom .gvimrc file 
+""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""
+" Basic options
+""""""""""""""""""""
+" Setting the font of the GUI
+set guifont=Monospace\ 10
+" Setting different colorscheme for the GUI
+"colorscheme mustang
+set background=dark
+" Set no blinking for visualbell
+set visualbell t_vb=
+" On the tab print the: Nr of tab, name of file, modified status
+set guitablabel=\[%N\]\ %t\ %M

@@ -1,0 +1,14 @@
+# docker-compose build devenv
+# docker-compose up --no-attach devenv
+
+version: '3'
+services:
+  devenv:
+    image: zsdev:latest
+    build:
+      context: .
+      dockerfile: zsdev.Dockerfile
+    tty: true
+    stdin_open: true
+    volumes:
+    - ~/.ssh:/root/.ssh

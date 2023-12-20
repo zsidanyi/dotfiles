@@ -1,0 +1,67 @@
+########################################
+## Custom alias file 
+########################################
+alias a       'alias'
+
+####################
+## Aliases to handle config files used commonly
+####################
+a     ea      'vim ~/.csh_aliases'
+a     sa      'source ~/.csh_aliases'
+a     ev      'vim ~/.vimrc'
+
+####################
+## Aliases to list things
+####################
+a     myls    'ls --color --group-directories-first'
+a     l       'myls -l'
+a     ll      'l'
+a     lll     'l'
+a     la      'myls -a'
+a     p       'pwd'
+
+a     grep    'grep --color=auto'
+
+####################
+## Aliases to move around
+####################
+a     ..      'cd ..'
+a     ...     'cd ..'
+
+####################
+## Aliases for vim
+####################
+a     vi      'vim'
+a     gi      'gvim'
+
+####################
+## Aliases for tmux handling
+####################
+a     tmux    'tmux -2'                                   # Force tmux to allow 256 colors
+a     tm      'tmux new-session -A -s ${USER}\!:1'        # Prefix session with user name
+
+####################
+## Aliases for ctags
+####################
+a     svtags  'ctags --extra=+q --fields=+i -n --languages=systemverilog -R \!*'    # ctags configured for systemverilog
+
+####################
+## Aliases for misc tools
+####################
+a     gitk    'gitk --all &'
+
+####################
+## Completions
+####################
+# Only look for directories
+complete cd "p/1/d/"
+
+# Only look for text files
+# complete vim "p/1/t/"
+# complete gvim "p/1/t/"
+complete less "p/1/t/"
+
+# Only look for commands
+# complete which 'p/1/c/'
+# complete where 'p/1/c/'
+# complete man 'p/1/c/'

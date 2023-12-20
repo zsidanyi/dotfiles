@@ -5,15 +5,12 @@ repo_root=~/dotfiles
 dotfiles=$repo_root/dotfiles
 configfiles=$repo_root/configfiles
 
+# Path to the targets
 dot_targetdir=~
 config_targetdir=~/.config
 
 # Creating default config dir if not present
 mkdir -p $config_targetdir
-
-exclude_list="
-  .gitignore
-"
 
 # ###########################
 # # Handling home dir dotfiles
@@ -21,13 +18,13 @@ exclude_list="
 
 # Unpopulating dotfiles and configs when switch "d" recieved
 if [ "$1" = "-d" ] ; then
+    # Unlink dotfiles if possible
     for dotfile in $dotfiles/* ; do
-        # Unlink dotfiles if possible
         unlink $dot_targetdir/.`basename $dotfile` 2> /dev/null
         echo "Dotfile .$dotfile unlinked"
     done
+    # Unlink configs if possible
     for configfile in $configfiles/* ; do
-        # Unlink configs if possible
         unlink $config_targetdir/`basename $configfile` 2> /dev/null
         echo "Config for $configfile unlinked"
     done
@@ -38,6 +35,7 @@ fi
 # Populating dotfiles
 for dotfile in $dotfiles/* ; do
     target_link=$dot_targetdir/.`basename $dotfile`
+
     # If there is already a dotfile with this name unlink it
     if [ -L $target_link ]; then
         unlink $target_link 2> /dev/null
@@ -51,6 +49,7 @@ done
 # Populating configs
 for config in $configfiles/* ; do
     target_link=$config_targetdir/`basename $config`
+
     # If there is already a config with this name unlink it
     if [ -L $target_link ]; then
         unlink $target_link 2> /dev/null

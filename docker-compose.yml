@@ -1,13 +1,14 @@
 # docker-compose build devenv
 # docker-compose up --no-attach devenv
 
-version: '3'
+version: '3.8'
 services:
   devenv:
-    image: zsdev:latest
+    image: zsdev-i
     build:
       context: .
-      dockerfile: zsdev.Dockerfile
+      dockerfile: Dockerfile.dev
+    container_name: zsdev-c
     tty: true
     stdin_open: true
     volumes:

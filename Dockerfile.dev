@@ -15,14 +15,7 @@ mc \
 clang
 
 ## Copy dotfiles downloaded from github
-COPY dotfiles /root/dotfiles
-
-## Create local repo for dotfiles to follow changes better
-WORKDIR /root/dotfiles
-RUN git init && \
-git config user.name local && git config user.email local@local.com && \
-git add -A && \
-git commit -m 'local commit'
+COPY . /root/dotfiles
 
 ## Deploy dotfiles and automate sourcing (interactive, tmux, git)
 RUN /root/dotfiles/deploy.sh && \

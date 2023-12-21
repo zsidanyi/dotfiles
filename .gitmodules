@@ -27,6 +27,10 @@
 	url = git@github.com:nvim-lualine/lualine.nvim.git
 	shallow = true
 [submodule "nvim-treesitter"]
-	path = configfiles/nvim/pack/rice/start/nvim-treesitter
+	path = configfiles/nvim/pack/lang/start/nvim-treesitter
 	url = git@github.com:nvim-treesitter/nvim-treesitter.git
+	shallow = true
+[submodule "nvim-lspconfig"]
+	path = configfiles/nvim/pack/lang/start/nvim-lspconfig
+	url = git@github.com:neovim/nvim-lspconfig.git
 	shallow = true

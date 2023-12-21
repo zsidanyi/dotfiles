@@ -1,7 +1,7 @@
 ## docker build -f devenv.Dockerfile -t zsdev:latest .
 FROM archlinux:latest
 
-## Installing dependencies clang for clangd
+## Installing dependencies; last dependencies for LSPs
 RUN pacman --noconfirm -Syu  && pacman --noconfirm -S \
 openssh \
 git \
@@ -12,7 +12,9 @@ vim \
 neovim \
 tmux \
 mc \
-clang
+clang \
+nodejs \
+npm
 
 ## Copy dotfiles downloaded from github
 COPY . /root/dotfiles
@@ -26,5 +28,11 @@ echo 'source ~/.bash_startup' > ~/.bash_profile && \
 echo 'source ~/.bash_aliases' >> ~/.bash_profile && \
 echo '[include]' >> ~/.gitconfig && \
 echo '    path = ~/.gitconfig_include' >> ~/.gitconfig
+
+# Install LSPs for webdev
+RUN npm install -g \
+typescript \
+typescript-language-server \
+@tailwindcss/language-server
 
 WORKDIR /workspace

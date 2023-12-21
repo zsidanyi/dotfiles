@@ -52,7 +52,7 @@ vim.cmd[[colorscheme tokyonight-storm]]
 opt.wildmenu = true -- tab complete on command line
 opt.ignorecase = true -- case insensitive
 opt.smartcase = true -- except when using capital letters
-opt.hlsearch = true -- highlight matching text
+opt.hlsearch = false -- highlight matching text
 opt.incsearch = true -- update highlight when typing
 opt.showmatch = true
 opt.gdefault = true -- default global substitution

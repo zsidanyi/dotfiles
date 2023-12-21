@@ -11,5 +11,6 @@ services:
     container_name: zsdev-c
     tty: true
     stdin_open: true
+    attach: false
     volumes:
     - ~/.ssh:/root/.ssh

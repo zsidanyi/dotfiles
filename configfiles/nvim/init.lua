@@ -59,7 +59,7 @@ opt.gdefault = true -- default global substitution
 
 -- Indentation options
 -- Use 4 spaces instead of tabs
-local numSpaces = 4
+local numSpaces = 2
 opt.tabstop = numSpaces
 opt.shiftwidth = numSpaces
 opt.softtabstop = numSpaces

@@ -34,3 +34,7 @@
 	path = configfiles/nvim/pack/lang/start/nvim-lspconfig
 	url = git@github.com:neovim/nvim-lspconfig.git
 	shallow = true
+[submodule "nvim-surround"]
+	path = configfiles/nvim/pack/default_lua/start/nvim-surround
+	url = git@github.com:kylechui/nvim-surround.git
+	shallow = true

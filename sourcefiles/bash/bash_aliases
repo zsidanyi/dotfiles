@@ -56,6 +56,18 @@ alias svtag='ctags --languages=systemverilog -R' # ctags configured for systemve
 ####################
 ## Shell functions
 ####################
+
+# prepend PATH only once with argument (no additional prepending when executed again)
+pathprepend() {
+  for ((i=$#; i>0; i--)); 
+  do
+    ARG=${!i}
+    if [ -d "$ARG" ] && [[ ":$PATH:" != *":$ARG:"* ]]; then
+        PATH="$ARG${PATH:+":$PATH"}"
+    fi
+  done
+}
+
 __Crypt_dir() {
     gpg-zip -c --output $2 --gpg-args "--s2k-cipher-algo AES256 --s2k-digest-algo SHA512 --s2k-count 65536" $1
 }

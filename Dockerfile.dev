@@ -20,14 +20,7 @@ npm
 COPY . /root/dotfiles
 
 ## Deploy dotfiles and automate sourcing (interactive, tmux, git)
-RUN /root/dotfiles/deploy.sh && \
-echo 'source ~/.bash_startup' > ~/.bashrc && \
-echo 'source ~/.bash_aliases' >> ~/.bashrc && \
-echo 'alias dotclone="git clone --recurse-submodules --shallow-submodules git@github.com:zsidanyi/dotfiles.git ~/dotfiles"' >> ~/.bashrc && \
-echo 'source ~/.bash_startup' > ~/.bash_profile && \
-echo 'source ~/.bash_aliases' >> ~/.bash_profile && \
-echo '[include]' >> ~/.gitconfig && \
-echo '    path = ~/.gitconfig_include' >> ~/.gitconfig
+RUN /root/dotfiles/deploy.sh -y
 
 # Install LSPs for webdev
 RUN npm install -g \

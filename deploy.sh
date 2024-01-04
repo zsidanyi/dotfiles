@@ -1,16 +1,37 @@
 #! /bin/sh
 
-# Path to the dotfiles
+answer_default=false
+if [ "$1" = "-y" ] ; then
+  answer_default=true
+fi
+
+# Can be used to ask if files should be deployed or not
+ask() {
+
+  if [ true = $answer_default ]; then
+    return
+  fi
+
+  read -p "$1 (Y/n): " resp
+  if [ -z "$resp" ]; then
+      response_lc="y" # empty is Yes
+  else
+      response_lc=$(echo "$resp" | tr '[:upper:]' '[:lower:]') # case insensitive
+  fi
+
+  [ "$response_lc" = "y" ]
+}
+
 repo_root=~/dotfiles
+
+# Path to the dotfiles
 dotfiles=$repo_root/dotfiles
 configfiles=$repo_root/configfiles
+sourcefiles=$repo_root/sourcefiles
 
 # Path to the targets
 dot_targetdir=~
 config_targetdir=~/.config
-
-# Creating default config dir if not present
-mkdir -p $config_targetdir
 
 # ###########################
 # # Handling home dir dotfiles
@@ -33,30 +54,71 @@ if [ "$1" = "-d" ] ; then
 fi
 
 # Populating dotfiles
-for dotfile in $dotfiles/* ; do
-    target_link=$dot_targetdir/.`basename $dotfile`
+if ask "Populate dotfiles?"; then
+  for dotfile in $dotfiles/* ; do
+      target_link=$dot_targetdir/.`basename $dotfile`
 
-    # If there is already a dotfile with this name unlink it
-    if [ -L $target_link ]; then
-        unlink $target_link 2> /dev/null
-    fi
+      # If there is already a dotfile with this name unlink it
+      if [ -L $target_link ]; then
+          unlink $target_link 2> /dev/null
+      fi
 
-    # Create the link to the new dotfile
-    ln -s $dotfile $target_link
-    echo "Dotfile .$dotfile deployed"
-done
+      # Create the link to the new dotfile
+      ln -s $dotfile $target_link
+      echo "Dotfile .$target_link deployed"
+  done
+fi
 
 # Populating configs
-for config in $configfiles/* ; do
-    target_link=$config_targetdir/`basename $config`
+if ask "Populate configfiles?"; then
 
-    # If there is already a config with this name unlink it
-    if [ -L $target_link ]; then
-        unlink $target_link 2> /dev/null
+  # Creating default config dir if not present
+  mkdir -p $config_targetdir
+
+  for config in $configfiles/* ; do
+      target_link=$config_targetdir/`basename $config`
+
+      # If there is already a config with this name unlink it
+      if [ -L $target_link ]; then
+          unlink $target_link 2> /dev/null
+      fi
+
+      # Create the link to the new config
+      ln -s $config $target_link
+      echo "Config for $target_link deployed"
+  done
+fi
+
+# Sourcing sourcefiles
+if ask "Source sourcefiles?"; then
+
+  # Check which shell are we using
+  used_shell="bash"
+  if [ "$SHELL" = "/bin/csh" ] || [ "$SHELL" = "/bin/tcsh" ]; then
+    used_shell="csh"
+  fi
+
+  main_rc=".${used_shell}rc"
+  main_profile=".${used_shell}_profile"
+
+  # Handle common sourcefiles
+  for sourcefile in $sourcefiles/* ; do
+    if [ -f $sourcefile ]; then
+      if [ "gitconfig_include" = `basename $sourcefile` ] && ask "Setup `basename $sourcefile`?"; then
+        echo "[include]" >> ~/.gitconfig
+        echo "  path = $sourcefile" >> ~/.gitconfig
+        echo "`basename $sourcefile` deployed"
+      fi
     fi
+  done
 
-    # Create the link to the new config
-    ln -s $config $target_link
-    echo "Config for $config deployed"
-done
+  # Handle shell specific sourcefiles
+  for sourcefile in $sourcefiles/$used_shell/* ; do
+    if ask "Setup `basename $sourcefile`?"; then
+      echo "source $sourcefile" >> ~/$main_rc
+      echo "source $sourcefile" >> ~/$main_profile
+      echo "`basename $sourcefile` deployed"
+    fi
+  done
+fi
 

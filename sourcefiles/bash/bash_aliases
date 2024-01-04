@@ -5,19 +5,19 @@
 #########################
 ## Aliases to handle config files used commonly
 #########################
-alias ea='vim ~/.bash_aliases'
-alias sa='source ~/.bash_aliases'
+alias ea='vim ~/.bashrc'
+alias sa='source ~/.bashrc'
 alias ev='vim ~/.vimrc'
 
 #########################
 ## Aliases to list things
 #########################
 alias ls='ls --color=auto --group-directories-first'
-alias l='ls -l'
+alias l='ls -lF'
 alias ll='l'
 alias lll='l'
-alias la='ls -a'
-alias lla='ll -a'
+alias la='ls -ACF'
+alias lla='ll -A'
 alias p='pwd'
 
 alias grep='grep --color=auto'
@@ -27,6 +27,11 @@ alias grep='grep --color=auto'
 #########################
 alias ..='cd ..'
 alias ...='cd ..'
+
+####################
+## Aliases for dotfiles handling
+####################
+alias dotclone="git clone --recurse-submodules --shallow-submodules git@github.com:zsidanyi/dotfiles.git ~/dotfiles"
 
 ####################
 ## Aliases for vim

@@ -1,14 +1,14 @@
 #! /bin/sh
 
-answer_default=false
+noconfirm=false
 if [ "$1" = "-y" ] ; then
-  answer_default=true
+  noconfirm=true
 fi
 
 # Can be used to ask if files should be deployed or not
 ask() {
 
-  if [ true = $answer_default ]; then
+  if [ true = $noconfirm ]; then
     return
   fi
 

@@ -31,7 +31,7 @@ alias ...='cd ..'
 ####################
 ## Aliases for dotfiles handling
 ####################
-alias dotclone="git clone --recurse-submodules --shallow-submodules git@github.com:zsidanyi/dotfiles.git ~/dotfiles"
+alias dotclone="git cu git@github.com:zsidanyi/dotfiles.git ~/dotfiles"
 
 ####################
 ## Aliases for vim

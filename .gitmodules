@@ -14,6 +14,10 @@
 	path = dotfiles/vim/pack/default/start/vim-fugitive
 	url = git@github.com:tpope/vim-fugitive.git
 	shallow = true
+[submodule "todo.txt-vim"]
+  path = dotfiles/vim/pack/default/start/todo.txt-vim
+  url = git@github.com:freitass/todo.txt-vim.git
+  shallow = true
 [submodule "verilog_systemverilog.vim"]
 	path = dotfiles/vim/pack/lang/opt/verilog_systemverilog.vim
 	url = git@github.com:vhda/verilog_systemverilog.vim.git
@@ -22,6 +26,10 @@
 	path = dotfiles/vim/pack/rice/start/vim-airline
 	url = git@github.com:vim-airline/vim-airline.git
 	shallow = true
+[submodule "nvim-surround"]
+  path = configfiles/nvim/pack/default_lua/start/nvim-surround
+  url = git@github.com:kylechui/nvim-surround.git
+  shallow = true
 [submodule "tokyonight.nvim"]
 	path = configfiles/nvim/pack/rice/start/tokyonight.nvim
 	url = git@github.com:folke/tokyonight.nvim.git
@@ -37,8 +45,4 @@
 [submodule "nvim-lspconfig"]
 	path = configfiles/nvim/pack/lang/start/nvim-lspconfig
 	url = git@github.com:neovim/nvim-lspconfig.git
-	shallow = true
-[submodule "nvim-surround"]
-	path = configfiles/nvim/pack/default_lua/start/nvim-surround
-	url = git@github.com:kylechui/nvim-surround.git
 	shallow = true

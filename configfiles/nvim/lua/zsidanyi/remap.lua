@@ -3,6 +3,7 @@ local bind = vim.keymap.set
 local silent = {silent = true}
 
 vim.g.mapleader = ","-- setup leader key
+vim.g.maplocalleader = '\\'
 
 -- Normal mode mappings
 bind('n', ';', ':') -- get to command mode with one keyhit
@@ -81,3 +82,7 @@ bind('i', [["",]], [["",]])
 bind('i', [['',]], [['',]])
 bind('i', [["";]], [["";]])
 bind('i', [['';]], [['';]])
+
+-- TODO management
+-- Create todo listitem
+bind('n', '<leader>e', ':put=strftime(\'%Y-%m-%d\')<cr>A ')

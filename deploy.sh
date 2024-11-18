@@ -83,6 +83,11 @@ if ask "Populate configfiles?"; then
           unlink $target_link 2> /dev/null
       fi
 
+      if [ -d $target_link ]; then
+          echo "Keeping $target_link as $target_link.orig"
+          mv $target_link $target_link.orig 2> /dev/null
+      fi
+
       # Create the link to the new config
       ln -s $config $target_link
       echo "Config for $target_link deployed"

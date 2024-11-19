@@ -1,26 +1,14 @@
 #! /bin/sh
 
+# Source utils
+. $(dirname "$0")/scripts/utils.sh
+
 noconfirm=false
 if [[ "$1" = "-y" ]]; then
   noconfirm=true
 fi
 
 # Can be used to ask if files should be deployed or not
-ask() {
-
-  if [[ true = $noconfirm ]]; then
-    return
-  fi
-
-  read -p "$1 (Y/n): " resp
-  if [[ -z "$resp" ]]; then
-    response_lc="y" # empty is Yes
-  else
-    response_lc=$(echo "$resp" | tr '[:upper:]' '[:lower:]') # case insensitive
-  fi
-
-  [ "$response_lc" = "y" ]
-}
 
 repo_root=~/dotfiles
 

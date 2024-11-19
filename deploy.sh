@@ -1,22 +1,22 @@
 #! /bin/sh
 
 noconfirm=false
-if [ "$1" = "-y" ] ; then
+if [[ "$1" = "-y" ]]; then
   noconfirm=true
 fi
 
 # Can be used to ask if files should be deployed or not
 ask() {
 
-  if [ true = $noconfirm ]; then
+  if [[ true = $noconfirm ]]; then
     return
   fi
 
   read -p "$1 (Y/n): " resp
-  if [ -z "$resp" ]; then
-      response_lc="y" # empty is Yes
+  if [[ -z "$resp" ]]; then
+    response_lc="y" # empty is Yes
   else
-      response_lc=$(echo "$resp" | tr '[:upper:]' '[:lower:]') # case insensitive
+    response_lc=$(echo "$resp" | tr '[:upper:]' '[:lower:]') # case insensitive
   fi
 
   [ "$response_lc" = "y" ]
@@ -38,34 +38,34 @@ config_targetdir=~/.config
 # ###########################
 
 # Unpopulating dotfiles and configs when switch "d" recieved
-if [ "$1" = "-d" ] ; then
-    # Unlink dotfiles if possible
-    for dotfile in $dotfiles/* ; do
-        unlink $dot_targetdir/.`basename $dotfile` 2> /dev/null
-        echo "Dotfile .$dotfile unlinked"
-    done
-    # Unlink configs if possible
-    for configfile in $configfiles/* ; do
-        unlink $config_targetdir/`basename $configfile` 2> /dev/null
-        echo "Config for $configfile unlinked"
-    done
-    # Exiting after unlink is done
-    exit 0
+if [[ "$1" = "-d" ]]; then
+  # Unlink dotfiles if possible
+  for dotfile in $dotfiles/* ; do
+    unlink $dot_targetdir/.`basename $dotfile` 2> /dev/null
+    echo "Dotfile .$dotfile unlinked"
+  done
+  # Unlink configs if possible
+  for configfile in $configfiles/* ; do
+    unlink $config_targetdir/`basename $configfile` 2> /dev/null
+    echo "Config for $configfile unlinked"
+  done
+  # Exiting after unlink is done
+  exit 0
 fi
 
 # Populating dotfiles
 if ask "Populate dotfiles?"; then
   for dotfile in $dotfiles/* ; do
-      target_link=$dot_targetdir/.`basename $dotfile`
+    target_link=$dot_targetdir/.`basename $dotfile`
 
-      # If there is already a dotfile with this name unlink it
-      if [ -L $target_link ]; then
-          unlink $target_link 2> /dev/null
-      fi
+    # If there is already a dotfile with this name unlink it
+    if [[ -L $target_link ]]; then
+      unlink $target_link 2> /dev/null
+    fi
 
-      # Create the link to the new dotfile
-      ln -s $dotfile $target_link
-      echo "Dotfile .$target_link deployed"
+    # Create the link to the new dotfile
+    ln -s $dotfile $target_link
+    echo "Dotfile .$target_link deployed"
   done
 fi
 
@@ -76,21 +76,21 @@ if ask "Populate configfiles?"; then
   mkdir -p $config_targetdir
 
   for config in $configfiles/* ; do
-      target_link=$config_targetdir/`basename $config`
+    target_link=$config_targetdir/`basename $config`
 
-      # If there is already a config with this name unlink it
-      if [ -L $target_link ]; then
-          unlink $target_link 2> /dev/null
-      fi
+    # If there is already a config with this name unlink it
+    if [[ -L $target_link ]]; then
+      unlink $target_link 2> /dev/null
+    fi
 
-      if [ -d $target_link ]; then
-          echo "Keeping $target_link as $target_link.orig"
-          mv $target_link $target_link.orig 2> /dev/null
-      fi
+    if [[ -d $target_link ]]; then
+      echo "Keeping $target_link as $target_link.orig"
+      mv $target_link $target_link.orig 2> /dev/null
+    fi
 
-      # Create the link to the new config
-      ln -s $config $target_link
-      echo "Config for $target_link deployed"
+    # Create the link to the new config
+    ln -s $config $target_link
+    echo "Config for $target_link deployed"
   done
 fi
 
@@ -99,7 +99,7 @@ if ask "Source sourcefiles?"; then
 
   # Check which shell are we using
   used_shell="bash"
-  if [ "$SHELL" = "/bin/csh" ] || [ "$SHELL" = "/bin/tcsh" ]; then
+  if [[ "$SHELL" = "/bin/csh" ]] || [[ "$SHELL" = "/bin/tcsh" ]]; then
     used_shell="csh"
   fi
 
@@ -108,8 +108,8 @@ if ask "Source sourcefiles?"; then
 
   # Handle common sourcefiles
   for sourcefile in $sourcefiles/* ; do
-    if [ -f $sourcefile ]; then
-      if [ "gitconfig_include" = `basename $sourcefile` ] && ask "Setup `basename $sourcefile`?"; then
+    if [[ -f $sourcefile ]]; then
+      if [[ "gitconfig_include" = `basename $sourcefile` ]] && ask "Setup `basename $sourcefile`?"; then
         echo "[include]" >> ~/.gitconfig
         echo "  path = $sourcefile" >> ~/.gitconfig
         echo "`basename $sourcefile` deployed"

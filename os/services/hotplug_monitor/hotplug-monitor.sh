@@ -23,8 +23,10 @@ device="card1-HDMI-A-1"  # change as needed
 # and (optionally) turn internal display off to save battery.
 if [ $(cat /sys/class/drm/${device}/status) == "connected" ];
 then
-  xrandr --output "${internal}" --auto  # turn internal display on (if needed)
-  xrandr --output "${external}" --auto --right-of "${internal}" # sends display to monitor
+  xrandr --output "${internal}" --off   # turn monitor display off
+  xrandr --output "${external}" --auto  # turn internal display on (if needed)
+  #xrandr --output "${internal}" --auto  # turn internal display on (if needed)
+  #xrandr --output "${external}" --auto --right-of "${internal}" # sends display to monitor
   #xrandr --output "${internal}" --off   # optionally turn internal display off
 
 # If external display was just physically disconnected, turn 

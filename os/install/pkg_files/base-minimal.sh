@@ -1,0 +1,13 @@
+base_minimal='
+grub
+intel-ucode
+binutils
+usbutils
+dhcpcd
+iwd
+bash-completion
+less
+vim
+git
+htop
+'

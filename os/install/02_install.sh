@@ -1,16 +1,22 @@
 #!/bin/bash
 
-declare -a install_pkg
+# Used in pkg_files to append packages to
+declare -a install_pkg_list
 
-# include base-minimal
-. $(dirname "$0")/pkg-files/base-minimal.sh
-echo $base_minimal
-install_pkg+=$base_minimal
+pkg_files=(
+ base_minimal
+ base_extended
+ lightwm_minimal
+)
 
-# include base-extended
-. $(dirname "$0")/pkg-files/base-extended.sh
-echo $base_extended
-install_pkg+=$base_extended
+for pkg_file in "${pkg_files[@]}"; do
+  # Include pkg files collected previously
+  . $(dirname "$0")/pkg_files/${pkg_file}.sh
+done
 
-sudo pacman -S $install_pkg
+exec_cmd=('sudo pacman -S')
+exec_cmd+=$install_pkg_list
+
+echo $exec_cmd
+eval $exec_cmd
 

@@ -1,8 +1,8 @@
-lightwm_minimal='
+install_pkg_list+='
 xorg-server
 xorg-xrandr
 lightdm
-lightdm-gtk-greater
+lightdm-gtk-greeter
 i3-wm
 i3status
 dmenu

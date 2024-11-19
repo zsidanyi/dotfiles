@@ -1,4 +1,4 @@
-base_extended='
+install_pkg_list+='
 man-db
 man-pages
 fastfetch

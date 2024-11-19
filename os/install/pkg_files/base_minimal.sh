@@ -1,4 +1,4 @@
-base_minimal='
+install_pkg_list+='
 grub
 intel-ucode
 binutils

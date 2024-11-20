@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# usage: sudo ./01_install.sh ./pkg_files/01_basic
-
 # Source utils
 . ~/dotfiles/scripts/utils.sh
 
@@ -10,28 +8,21 @@ if ! [[ $(id -u) = 0 ]]; then
   fatal "Please run as root/sudo!"
 fi
 
-# TODO Do this somewhere else, and here just check for connection!
+echo "Enabling DHCP"
 systemctl enable dhcpcd.service
 systemctl start dhcpcd.service
 
-if ! [[ -d $1 ]]; then
-  fatal "Not a proper dir is provided"
+if ask "Set new user?"; then
+  # Ask for username with default
+  read -p "username[zsidanyi]: " username
+  username=${username:-zsidanyi}
+
+  useradd -m -G wheel $username
+  passwd $username
+
+  # Uncomment sudo line for group wheel
+  sed -i 's/^# \(%wheel.*) ALL$\)/\1/' /etc/sudoers
 fi
-
-pkgfiles_path=$(realpath -s "$1")
-echo $pkgfiles_path
-
-for pkg_file in $pkgfiles_path/*; do
-  info "Installing packages: "
-  cat $pkg_file | tr '\n' ' '; echo ""
-  # Installing the packages
-  if ask "Install `basename $pkg_file`?"; then
-    pacman -S --needed --noconfirm - < $pkg_file
-  fi
-done
-
-# TODO Do this somewhere else, possibly create and source specific install scripts
-systemctl enable lightdm.service
 
 # MANUAL FONT INSTALLATION
 # mkdir -p ~/.local/share/fonts/ttf/CousineNerdFontMono

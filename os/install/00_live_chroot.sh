@@ -93,16 +93,5 @@ if ask "Install grub?"; then
   grub-mkconfig -o /boot/grub/grub.cfg
 fi
 
-if ask "Set new user?"; then
-  # Ask for username with default
-  read -p "username[zsidanyi]: " username
-  username=${username:-zsidanyi}
-
-  useradd -m -G wheel $username
-  passwd $username
-
-  # Uncomment sudo line for group wheel
-  sed -i 's/^# \(%wheel.*) ALL$\)/\1/' /etc/sudoers
-fi
-
 info "setup finished; reboot into arch and continue with next setup script"
+

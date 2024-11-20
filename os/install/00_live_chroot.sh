@@ -1,16 +1,36 @@
 #!/bin/bash
 
-# Source utils
-. ~/dotfiles/scripts/utils.sh
-
-# Installing arch with pacstrap script
+# THE FOLLOWING SHOULD BE PERFORMED FROM THE LIVE MEDIUM
+# Create partitions with fdisk -> GPT!
+# e.g.: fdisk /dev/sda (m for help; g for GPT!)
+# sda1 -> 1GB (+1G) - boot partition
+# sda2 -> 4GB (+4G) - swap partition (minimum)
+# sda3 -> remaining - root partition
+# 
+# Format the partitions:
+# mkfs.fat -F 32 /dev/sda1
+# mkswap /dev/sda2
+# mkfs.ext4 /dev/sda3
+#
+# Mount the partitions
+# mount /dev/sda3 /mnt
+# mount --mkdir /dev/sda1 /mnt/boot
+# swapon /dev/sda2
+# 
+# Install arch with pacstrap script
 # pacstrap -K /mnt base linux linux-firmware
+#
+# Chroot to installation
 # arch-chroot /mnt
-
-# Already this should be in place after chroot
+#
+# After chroot
 # pacman-key --init
 # pacman-key --populate
 # pacman -S vim git
+#
+# Source utils
+. ~/dotfiles/scripts/utils.sh
+
 
 # Test for root
 if ! [[ $(id -u) = 0 ]]; then

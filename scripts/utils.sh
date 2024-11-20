@@ -18,4 +18,6 @@ ask() {
 }
 
 # Provide meaningful error message before exiting
-bail() { echo "FATAL: $1"; exit 1; }
+fatal() { echo "FATAL: $1"; exit 1; }
+warning() { echo "WARNING: $1";}
+info() { echo "INFO: $1";}

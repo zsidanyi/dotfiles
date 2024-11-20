@@ -9,8 +9,8 @@ if ! [[ $(id -u) = 0 ]]; then
 fi
 
 echo "Enabling DHCP"
-systemctl enable dhcpcd.service
 systemctl start dhcpcd.service
+systemctl enable dhcpcd.service
 
 if ask "Set new user?"; then
   # Ask for username with default

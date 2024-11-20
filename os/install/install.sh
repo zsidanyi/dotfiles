@@ -20,7 +20,7 @@ echo $pkgfiles_path
 for pkg_file in $pkgfiles_path/*; do
 
   if [[ `basename $pkg_file` = "postinstall.sh" ]]; then
-    echo "In postinstall: $pkg_file"
+    echo "Executing postinstall: $pkg_file"
     . $pkg_file
     continue
   fi

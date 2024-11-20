@@ -74,7 +74,7 @@ fi
 
 echo "Setting root password"
 # NP in status means no passwd is set
-if passwd --status | grep NP 1>/dev/null; then
+if passwd --status | grep -E "NP|L" 1>/dev/null; then
   passwd
 else
   info "passwd already set! Use 'passwd -d root' to unset it!"

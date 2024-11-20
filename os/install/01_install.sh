@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# usage: sudo ./01_install.sh ./pkg_files/01_basic
+
 # Source utils
 . ~/dotfiles/scripts/utils.sh
 
@@ -8,6 +10,7 @@ if ! [[ $(id -u) = 0 ]]; then
   fatal "Please run as root/sudo!"
 fi
 
+# TODO Do this somewhere else, and here just check for connection!
 systemctl enable dhcpcd.service
 
 if ! [[ -d $1 ]]; then
@@ -27,7 +30,7 @@ for pkg_file in $pkgfiles_path/*; do
 done
 
 # MANUAL FONT INSTALLATION
-# mkdir -p ~/.local/share/fonts/ttf/Cousine
-# unzip ~/dotfiles/lfs_artifacts/terminal_font/Cousine.zip -d ~/.local/share/fonts/ttf/Cousine
-# chmod 444 ~/.local/share/fonts/ttf/Cousine/*
+# mkdir -p ~/.local/share/fonts/ttf/CousineNerdFontMono
+# unzip ~/dotfiles/lfs_artifacts/terminal_font/CousineNerdFontMono.zip -d ~/.local/share/fonts/ttf/CousineNerdFontMono
+# chmod 444 ~/.local/share/fonts/ttf/CousineNerdFontMono/*
 # fc-cache

@@ -20,6 +20,9 @@
 # Install arch with pacstrap script
 # pacstrap -K /mnt base linux linux-firmware
 #
+# Generate filesystem table to automount next time
+# genfstab -U /mnt >> /mnt/etc/fstab
+#
 # Chroot to installation
 # arch-chroot /mnt
 #
@@ -27,10 +30,9 @@
 # pacman-key --init
 # pacman-key --populate
 # pacman -S vim git
-#
+
 # Source utils
 . ~/dotfiles/scripts/utils.sh
-
 
 # Test for root
 if ! [[ $(id -u) = 0 ]]; then

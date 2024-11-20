@@ -18,6 +18,8 @@
 # swapon /dev/sda2
 # 
 # Install arch with pacstrap script
+# pacman-key --init
+# pacman-key --populate
 # pacstrap -K /mnt base linux linux-firmware
 #
 # Generate filesystem table to automount next time
@@ -30,6 +32,7 @@
 # pacman-key --init
 # pacman-key --populate
 # pacman -S vim git
+# cd; git clone https://github.com/zsidanyi/dotfiles.git
 
 # Source utils
 . ~/dotfiles/scripts/utils.sh
@@ -42,7 +45,7 @@ fi
 echo "Setting time"
 localtime_file=/etc/localtime
 if [[ ! -L $localtime_file ]]; then
-  ln -sf /usr/share/zoneinfo/Europe/Budapest /etc/localtime
+  ln -sf /usr/share/zoneinfo/Europe/Budapest $localtime_file
   hwclock --systohc
 else
   echo "localtime already set: $localtime_file"
@@ -78,6 +81,7 @@ else
 fi
 
 echo "Installing basic images needed to boot properly from drive"
+pacman -Syyu --noconfirm
 pacman -S --needed --noconfirm - < $(dirname "$0")/pkg_files/00_live_chroot.txt
 
 if ask "Install grub?"; then

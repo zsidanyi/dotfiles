@@ -12,6 +12,7 @@ fi
 
 # TODO Do this somewhere else, and here just check for connection!
 systemctl enable dhcpcd.service
+systemctl start dhcpcd.service
 
 if ! [[ -d $1 ]]; then
   fatal "Not a proper dir is provided"
@@ -28,6 +29,9 @@ for pkg_file in $pkgfiles_path/*; do
     pacman -S --needed --noconfirm - < $pkg_file
   fi
 done
+
+# TODO Do this somewhere else, possibly create and source specific install scripts
+systemctl enable lightdm.service
 
 # MANUAL FONT INSTALLATION
 # mkdir -p ~/.local/share/fonts/ttf/CousineNerdFontMono

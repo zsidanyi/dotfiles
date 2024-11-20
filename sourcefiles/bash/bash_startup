@@ -31,5 +31,7 @@ PS1+='$(__git_ps1 " (%s)")'
 PS1+="$txtrst\$ "
 
 # Make ssh work after mounting host ssh dir
-chmod 700 ~/.ssh
-chmod 600 ~/.ssh/*
+if [[ -d ~/.ssh ]]; then
+  chmod 700 ~/.ssh
+  chmod 600 ~/.ssh/*
+fi

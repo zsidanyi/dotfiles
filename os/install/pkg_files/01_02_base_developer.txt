@@ -1,0 +1,4 @@
+gcc
+clang
+tmux
+neovim

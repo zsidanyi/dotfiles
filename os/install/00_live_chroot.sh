@@ -12,6 +12,11 @@
 # pacman-key --populate
 # pacman -S vim git
 
+# Test for root
+if ! [[ $(id -u) = 0 ]]; then
+  fatal "Please run as root/sudo!"
+fi
+
 # Time settings
 localtime_file=/etc/localtime
 if [[ ! -L $localtime_file ]]; then
@@ -51,8 +56,7 @@ else
 fi
 
 # Installing basic images needed to boot properly from drive
-. $(dirname "$0")/pkg_files/00_live_chroot.txt
-pacman -S --needed --noconfirm $pkg_list
+pacman -S --needed --noconfirm - < $(dirname "$0")/pkg_files/00_live_chroot.txt
 
 if ask "Install grub?"; then
   grub-install \

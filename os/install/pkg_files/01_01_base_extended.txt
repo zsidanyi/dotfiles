@@ -1,10 +1,6 @@
-install_pkg_list+='
 man-db
 man-pages
 fastfetch
 ncdu
 rsync
 ranger
-tmux
-neovim
-'

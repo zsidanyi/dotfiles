@@ -1,4 +1,3 @@
-install_pkg_list+='
 xorg-server
 xorg-xrandr
 lightdm
@@ -15,4 +14,3 @@ evince
 feh
 vlc
 chromium
-'

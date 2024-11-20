@@ -5,6 +5,7 @@ binutils
 usbutils
 dhcpcd
 iwd
+openssh
 bash-completion
 less
 vim

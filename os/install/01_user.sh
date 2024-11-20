@@ -45,10 +45,9 @@ fi
 
 pacman -S --needed --noconfirm efibootmgr grub intel-ucode
 
-mkdir -p /boot/efi
 grub-install \
   --target=x86_64-efi \
-  --efi-directory=/boot/efi \
+  --efi-directory=/boot \
   --bootloader-id=GRUB
 
 grub-mkconfig -o /boot/grub/grub.cfg

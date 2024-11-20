@@ -26,6 +26,7 @@ for pkg_file in $pkgfiles_path/*; do
   fi
 done
 
+# MANUAL FONT INSTALLATION
 # mkdir -p ~/.local/share/fonts/ttf/Cousine
 # unzip ~/dotfiles/lfs_artifacts/terminal_font/Cousine.zip -d ~/.local/share/fonts/ttf/Cousine
 # chmod 444 ~/.local/share/fonts/ttf/Cousine/*

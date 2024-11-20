@@ -17,7 +17,7 @@ if ! [[ $(id -u) = 0 ]]; then
   fatal "Please run as root/sudo!"
 fi
 
-# Time settings
+echo "Setting time"
 localtime_file=/etc/localtime
 if [[ ! -L $localtime_file ]]; then
   ln -sf /usr/share/zoneinfo/Europe/Budapest /etc/localtime
@@ -26,7 +26,7 @@ else
   echo "localtime already set: $localtime_file"
 fi
 
-# Language settings
+echo "Setting language"
 localegen_file=/etc/locale.gen
 # if there is no uncommented lines in locale.gen language is considered not set
 if ! grep "^[^#;]" /etc/locale.gen 1>/dev/null; then
@@ -38,7 +38,7 @@ else
   info "locale is already set in: $localegen_file"
 fi
 
-# Setting hostname for the machine
+echo "Setting hostname"
 hostname_file=/etc/hostname
 if [[ ! -f $hostname_file ]]; then
   read -p "hostname: " hostname
@@ -47,7 +47,7 @@ else
   info "hostname is already set in: $hostname_file"
 fi
 
-# Setting root password
+echo "Setting root password"
 # NP in status means no passwd is set
 if passwd --status | grep NP 1>/dev/null; then
   passwd
@@ -55,7 +55,7 @@ else
   info "passwd already set! Use 'passwd -d root' to unset it!"
 fi
 
-# Installing basic images needed to boot properly from drive
+echo "Installing basic images needed to boot properly from drive"
 pacman -S --needed --noconfirm - < $(dirname "$0")/pkg_files/00_live_chroot.txt
 
 if ask "Install grub?"; then
@@ -67,19 +67,16 @@ if ask "Install grub?"; then
   grub-mkconfig -o /boot/grub/grub.cfg
 fi
 
-if ! ask "Set new user?"; then
-  info "setup finished; reboot into arch and continue with next setup script"
-  exit 0
+if ask "Set new user?"; then
+  # Ask for username with default
+  read -p "username[zsidanyi]: " username
+  username=${username:-zsidanyi}
+
+  useradd -m -G wheel $username
+  passwd $username
+
+  # Uncomment sudo line for group wheel
+  sed -i 's/^# \(%wheel.*) ALL$\)/\1/' /etc/sudoers
 fi
-
-# Ask for username with default
-read -p "username[zsidanyi]: " username
-username=${username:-zsidanyi}
-
-useradd -m -G wheel $username
-passwd $username
-
-# Uncomment sudo line for group wheel
-sed -i 's/^# \(%wheel.*) ALL$\)/\1/' /etc/sudoers
 
 info "setup finished; reboot into arch and continue with next setup script"

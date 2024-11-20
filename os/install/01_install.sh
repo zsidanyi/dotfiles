@@ -34,3 +34,6 @@ done
 # unzip ~/dotfiles/lfs_artifacts/terminal_font/CousineNerdFontMono.zip -d ~/.local/share/fonts/ttf/CousineNerdFontMono
 # chmod 444 ~/.local/share/fonts/ttf/CousineNerdFontMono/*
 # fc-cache
+#
+# To check all the nerdfonts available, start installing nerdfont group from extra
+# sudo pacman -S nerd-fonts

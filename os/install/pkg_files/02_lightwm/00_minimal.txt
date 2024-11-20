@@ -2,13 +2,13 @@ xorg-server
 xorg-xrandr
 lightdm
 lightdm-gtk-greeter
+pulseaudio
+pulsemixer
+alacritty
 i3-wm
 i3status
 ttf-cousine-nerd
 dmenu
-pulseaudio
-pulsemixer
-alacritty
 picom
 keepass
 evince

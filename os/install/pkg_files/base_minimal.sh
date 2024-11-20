@@ -1,9 +1,6 @@
 install_pkg_list+='
-grub
-intel-ucode
 binutils
 usbutils
-dhcpcd
 iwd
 openssh
 bash-completion

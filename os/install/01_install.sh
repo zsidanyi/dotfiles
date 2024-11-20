@@ -3,6 +3,8 @@
 # Source utils
 . ~/dotfiles/scripts/utils.sh
 
+systemctl enable dhcpcd.service
+
 # Used in pkg_files to append packages to
 declare -a install_pkg_list
 

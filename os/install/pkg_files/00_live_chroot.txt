@@ -1,0 +1,6 @@
+pkg_list='
+efibootmgr
+grub
+intel-ucode
+dhcpcd
+'

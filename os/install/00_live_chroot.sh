@@ -22,10 +22,15 @@ else
 fi
 
 # Language settings
-echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
-echo "hu_HU.UTF-8 UTF-8" >> /etc/locale.gen
-locale-gen
-echo "LANG=en_US.UTF-8" > /etc/locale.conf
+localegen_file=/etc/locale.gen
+if ! grep "^[^#;]" /etc/locale.gen 2>/dev/null; then
+  echo "en_US.UTF-8 UTF-8" >> $localegen_file
+  echo "hu_HU.UTF-8 UTF-8" >> $localegen_file
+  locale-gen
+  echo "LANG=en_US.UTF-8" > /etc/locale.conf
+else
+  echo "locale is already set in: $localegen_file!"
+fi
 
 # Setting hostname for the machine
 hostname_file=/etc/hostname
@@ -43,7 +48,8 @@ else
   echo "passwd already set! Use 'passwd -d root' to unset it!"
 fi
 
-pacman -S --needed --noconfirm efibootmgr grub intel-ucode
+. $(dirname "$0")/pkg_files/00_live_chroot.txt
+pacman -S --needed --noconfirm $pkg_list
 
 grub-install \
   --target=x86_64-efi \

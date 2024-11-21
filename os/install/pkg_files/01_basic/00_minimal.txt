@@ -1,9 +1,0 @@
-binutils
-usbutils
-iwd
-openssh
-bash-completion
-less
-vim
-git
-htop

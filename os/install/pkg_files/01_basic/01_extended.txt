@@ -1,7 +1,0 @@
-man-db
-man-pages
-unzip
-fastfetch
-ncdu
-rsync
-ranger

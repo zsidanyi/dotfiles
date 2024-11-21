@@ -1,6 +1,0 @@
-gcc
-clang
-tmux
-fzf
-ripgrep
-neovim

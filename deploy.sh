@@ -1,7 +1,7 @@
 #! /bin/sh
 
 # Source utils
-. $(dirname "$0")/scripts/utils.sh
+. $(dirname "$0")/utils/utils.sh
 
 noconfirm=false
 if [[ "$1" = "-y" ]]; then

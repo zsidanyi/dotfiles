@@ -22,8 +22,25 @@ fi
 
 # Sourcing git helper scripts for prompt
 # These can be found usually in directory /usr/share/git/completion/
-source /usr/share/git/completion/git-completion.bash
-source /usr/share/git/completion/git-prompt.sh
+if git_comp_file=/usr/share/git/completion/git-completion.bash && \
+[[ -f ${git_comp_file} ]]; then
+  source ${git_comp_file}
+elif git_comp_file=/usr/share/bash-completion/completions/git && \
+[[ -f ${git_comp_file} ]]; then
+  source ${git_comp_file}
+else
+  echo "No git completion found!"
+fi
+
+if git_prompt_file=/usr/share/git/completion/git-prompt.sh && \
+[[ -f ${git_prompt_file} ]]; then
+  source ${git_prompt_file}
+elif git_prompt_file=/etc/bash_completion.d/git-prompt && \
+[[ -f ${git_prompt_file} ]]; then
+  source ${git_prompt_file}
+else
+  echo "No git prompt config found!"
+fi
 
 # Setting prompt in more stages
 PS1="[$bldgreen\u$txtrst@$bldblue\h$txtrst:\W]$bldpurple"

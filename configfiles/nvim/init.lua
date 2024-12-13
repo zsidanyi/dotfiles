@@ -27,8 +27,9 @@ opt.laststatus = 3 -- statusline always on
 opt.showcmd = true -- show partial commands in the last line
 opt.ruler = true -- display cursor position
 
+opt.wrap = false
 opt.number = true
-opt.relativenumber = true
+-- opt.relativenumber = true
 opt.visualbell = true
 opt.mouse = "a"
 vim.cmd[[set path+=**]] -- path to be able to search fuzzy down in the tree

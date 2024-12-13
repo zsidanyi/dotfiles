@@ -89,8 +89,9 @@ set wildmode=full
 " Set command window height
 set cmdheight=2
 " Set line numbering (relative)
+set nowrap
 set number
-set relativenumber
+" set relativenumber
 " Show partial commands in the last line
 set showcmd
 " Use visual bell instead of beeping

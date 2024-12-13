@@ -57,8 +57,9 @@ bind('n', '<leader>g', ':Rg ')
 -- Visual mode mappings
 bind('v', '<leader>g', 'y:Rg <C-R>"<CR>') -- ripgrep
 
-bind('v', 'J', ":m '>+1<CR>gv=gv") -- move blocks of code
-bind('v', 'K', ":m '<-2<CR>gv=gv")
+-- move blocks of code
+-- bind('v', 'J', ":m '>+1<CR>gv=gv")
+-- bind('v', 'K', ":m '<-2<CR>gv=gv")
 
 bind('x', '<leader>p',"\"_dP") -- copy paste selection over and over
 

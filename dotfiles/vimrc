@@ -1,5 +1,5 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Custom .vimrc file 
+" Custom .vimrc file
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin related code
@@ -102,7 +102,7 @@ set visualbell t_vb=
 set mouse=a
 " Display cursor position
 set ruler
-" Setting colorscheme and transparent background 
+" Setting colorscheme and transparent background
 colorscheme basic-dark
 autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
 " Enable plugins
@@ -110,10 +110,10 @@ filetype plugin on
 " Setting statusline always on
 set laststatus=2
 " Status line format
-set statusline=%F\ %h%m%r%w\ 
+set statusline=%F\ %h%m%r%w\
 " Set no compatibility with old Vi
 set nocompatible
-" Inform vim which terminal application is used 
+" Inform vim which terminal application is used
 set term=$TERM
 
 " Enable fold by syntax in all files
@@ -124,8 +124,6 @@ set term=$TERM
 set path+=**
 " Set virtualedit for block selection (actual rectangle is used)
 set virtualedit=block
-" Set autoindent (keep indenting while new line isert)
-set autoindent
 " Set fast terminal connection
 "set ttyfast
 " Always create undo files
@@ -168,12 +166,19 @@ set gdefault
 """"""""""""""""""""
 " Indentation options
 """"""""""""""""""""
-" Use 4 spaces instead of tabs
+" Use spaces instead of tabs
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
 set t_BE=
+" Set autoindent (keep indenting while new line isert)
+set autoindent
+
+""""""""""""""""""""
+" Highlight whitespaces on lineendings
+""""""""""""""""""""
+autocmd BufRead,BufNewFile * match Error /\s\+$/
 
 """"""""""""""""""""
 " Extesnion for basic options
@@ -256,7 +261,7 @@ nnoremap <silent> <F4> :set list!<CR>
 " FZF Files command full screen set to ,+f
 nnoremap <leader>f :Files!<CR>
 " FZF grep (ripgrep)
-nnoremap <leader>g :Rg 
+nnoremap <leader>g :Rg
 
 " Debug key (always holds something different)
 " Executing a function call into a register and then pasting the result

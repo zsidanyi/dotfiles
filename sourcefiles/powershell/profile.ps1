@@ -10,10 +10,20 @@
 
 ### Beginning of effective file
 
-echo "Custom profile read"
-
 ## Setting Bash like operation for completion
 #Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 Set-PSReadLineKeyHandler -Key Tab -Function Complete
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+
+## Aliases
+Set-Alias -Name ll -Value Get-ChildItem
+Function CDUP {Set-Location ..}
+Set-Alias -Name .. -Value CDUP
+
+## Updating helps if not done yet
+$ModuleHelps2Update = @('Microsoft.Powershell.Core', 'Microsoft.Powershell.Utility', 'Microsoft.PowerShell.Management', 'Microsoft.PowerShell.Security')
+Update-Help -Module $ModuleHelps2Update
+
+### End of profile
+echo "Custom profile read"

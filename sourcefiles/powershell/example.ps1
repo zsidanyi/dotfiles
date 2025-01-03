@@ -5,9 +5,11 @@
 Write-Host "Hello World!!" -NoNewline
 Write-Host "Hello again"
 
-
 Write-Host "Writing to file"
 "May the force be with you" | Out-File forcewithwho.txt
+
+$first_var = 1
+Write-Host "The value of my first var is: $firs_var"
 
 # Creating/Copying/Renaming folders and files
 New-Item -Path .\ -Name "deathstar" -ItemType Directory

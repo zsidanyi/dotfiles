@@ -1,48 +1,52 @@
 [submodule "fzf"]
-	path = dotfiles/vim/pack/default/start/fzf
-	url = git@github.com:junegunn/fzf.git
-	shallow = true
+  path = dotfiles/vim/pack/default/start/fzf
+  url = git@github.com:junegunn/fzf.git
+  shallow = true
 [submodule "fzf.vim"]
-	path = dotfiles/vim/pack/default/start/fzf.vim
-	url = git@github.com:junegunn/fzf.vim.git
-	shallow = true
+  path = dotfiles/vim/pack/default/start/fzf.vim
+  url = git@github.com:junegunn/fzf.vim.git
+  shallow = true
 [submodule "vim-vinegar"]
-	path = dotfiles/vim/pack/default/start/vim-vinegar
-	url = git@github.com:tpope/vim-vinegar.git
-	shallow = true
+  path = dotfiles/vim/pack/default/start/vim-vinegar
+  url = git@github.com:tpope/vim-vinegar.git
+  shallow = true
 [submodule "vim-fugitive"]
-	path = dotfiles/vim/pack/default/start/vim-fugitive
-	url = git@github.com:tpope/vim-fugitive.git
-	shallow = true
+  path = dotfiles/vim/pack/default/start/vim-fugitive
+  url = git@github.com:tpope/vim-fugitive.git
+  shallow = true
 [submodule "todo.txt-vim"]
   path = dotfiles/vim/pack/default/start/todo.txt-vim
   url = git@github.com:freitass/todo.txt-vim.git
   shallow = true
 [submodule "verilog_systemverilog.vim"]
-	path = dotfiles/vim/pack/lang/opt/verilog_systemverilog.vim
-	url = git@github.com:vhda/verilog_systemverilog.vim.git
-	shallow = true
+  path = dotfiles/vim/pack/lang/opt/verilog_systemverilog.vim
+  url = git@github.com:vhda/verilog_systemverilog.vim.git
+  shallow = true
 [submodule "vim-airline"]
-	path = dotfiles/vim/pack/rice/start/vim-airline
-	url = git@github.com:vim-airline/vim-airline.git
-	shallow = true
+  path = dotfiles/vim/pack/rice/start/vim-airline
+  url = git@github.com:vim-airline/vim-airline.git
+  shallow = true
 [submodule "nvim-surround"]
   path = configfiles/nvim/pack/default_lua/start/nvim-surround
   url = git@github.com:kylechui/nvim-surround.git
   shallow = true
 [submodule "tokyonight.nvim"]
-	path = configfiles/nvim/pack/rice/start/tokyonight.nvim
-	url = git@github.com:folke/tokyonight.nvim.git
-	shallow = true
+  path = configfiles/nvim/pack/rice/start/tokyonight.nvim
+  url = git@github.com:folke/tokyonight.nvim.git
+  shallow = true
 [submodule "lualine.nvim"]
-	path = configfiles/nvim/pack/rice/start/lualine.nvim
-	url = git@github.com:nvim-lualine/lualine.nvim.git
-	shallow = true
+  path = configfiles/nvim/pack/rice/start/lualine.nvim
+  url = git@github.com:nvim-lualine/lualine.nvim.git
+  shallow = true
 [submodule "nvim-treesitter"]
-	path = configfiles/nvim/pack/lang/start/nvim-treesitter
-	url = git@github.com:nvim-treesitter/nvim-treesitter.git
-	shallow = true
+  path = configfiles/nvim/pack/lang/start/nvim-treesitter
+  url = git@github.com:nvim-treesitter/nvim-treesitter.git
+  shallow = true
 [submodule "nvim-lspconfig"]
-	path = configfiles/nvim/pack/lang/start/nvim-lspconfig
-	url = git@github.com:neovim/nvim-lspconfig.git
-	shallow = true
+  path = configfiles/nvim/pack/lang/start/nvim-lspconfig
+  url = git@github.com:neovim/nvim-lspconfig.git
+  shallow = true
+[submodule "configfiles/nvim/pack/lang/start/render-markdown.nvim"]
+  path = configfiles/nvim/pack/lang/start/render-markdown.nvim
+  url = git@github.com:MeanderingProgrammer/render-markdown.nvim.git
+  shallow = true

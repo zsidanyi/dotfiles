@@ -33,8 +33,6 @@ opt.number = true
 opt.visualbell = true
 opt.mouse = "a"
 vim.cmd[[set path+=**]] -- path to be able to search fuzzy down in the tree
-opt.autoindent = true -- autoindent (keep indenting while new line isert)
-opt.smartindent = true
 opt.listchars= {
     space = '·',
     eol = '¬',
@@ -47,8 +45,6 @@ opt.listchars= {
 
 opt.completeopt = 'menu' -- omnicompletion only in menu not in separate buffer
 
-vim.cmd[[colorscheme tokyonight-storm]]
-
 -- Search options
 opt.wildmenu = true -- tab complete on command line
 opt.ignorecase = true -- case insensitive
@@ -59,11 +55,21 @@ opt.showmatch = true
 opt.gdefault = true -- default global substitution
 
 -- Indentation options
--- Use 4 spaces instead of tabs
+-- Use spaces instead of tabs
 local numSpaces = 2
 opt.tabstop = numSpaces
 opt.shiftwidth = numSpaces
 opt.softtabstop = numSpaces
 opt.expandtab = true
 opt.smarttab = true
+opt.autoindent = true -- autoindent (keep indenting while new line isert)
+opt.smartindent = true
 
+-- TODO not working highlight of whitespace lineendings
+-- vim.cmd([[
+-- autocmd BufRead,BufNewFile * match Error /\s\+$/
+-- ]])
+
+vim.cmd([[
+colorscheme tokyonight-storm
+]])

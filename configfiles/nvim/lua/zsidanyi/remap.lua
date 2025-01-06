@@ -69,20 +69,20 @@ bind('i', '<up>',    '<nop>')
 bind('i', '<down>',  '<nop>')
 bind('i', '<left>',  '<nop>')
 bind('i', '<right>', '<nop>')
--- extend brackets
-bind('i', '()',  '()<Esc>i')
-bind('i', '{}',  '{}<Esc>i')
-bind('i', '[]',  '[]<Esc>i')
-bind('i', '();', '();')
-bind('i', '{};', '{};')
-bind('i', '[];', '[];')
--- extend quotes
-bind('i', [[""]],  [[""<Esc>i]])
-bind('i', [['']],  [[''<Esc>i]])
-bind('i', [["",]], [["",]])
-bind('i', [['',]], [['',]])
-bind('i', [["";]], [["";]])
-bind('i', [['';]], [['';]])
+-- -- extend brackets
+-- bind('i', '()',  '()<Esc>i')
+-- bind('i', '{}',  '{}<Esc>i')
+-- bind('i', '[]',  '[]<Esc>i')
+-- bind('i', '();', '();')
+-- bind('i', '{};', '{};')
+-- bind('i', '[];', '[];')
+-- -- extend quotes
+-- bind('i', [[""]],  [[""<Esc>i]])
+-- bind('i', [['']],  [[''<Esc>i]])
+-- bind('i', [["",]], [["",]])
+-- bind('i', [['',]], [['',]])
+-- bind('i', [["";]], [["";]])
+-- bind('i', [['';]], [['';]])
 
 -- TODO management
 -- Create todo listitem

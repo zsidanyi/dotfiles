@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 
 # Source utils
 . $(dirname "$0")/utils/utils.sh
